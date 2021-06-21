@@ -18,6 +18,7 @@
 							"        method: 'GET'\r",
 							"    }, function(err, response){\r",
 							"        pm.expect(response.code).to.equal(200);\r",
+							"        pm.expect(response.json().length).to.equal(3)\r",
 							"    });\r",
 							"});"
 						],
@@ -49,7 +50,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"test_coupon_get\", function(){\r",
+							"pm.test(\"test_coupon_get_by_id\", function(){\r",
 							"    pm.expect(pm.response.code).to.equal(200);\r",
 							"});"
 						],
@@ -82,8 +83,20 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"test_coupon_get\", function(){\r",
+							"\r",
+							"\r",
+							"pm.test(\"test_coupon_post\", function(){\r",
 							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"test_coupon_get\", function(){\r",
+							"    pm.sendRequest({\r",
+							"        url: 'http://localhost:8080/coupon',\r",
+							"        method: 'GET'\r",
+							"    }, function(err, response){\r",
+							"        pm.expect(response.code).to.equal(200);\r",
+							"        pm.expect(response.json().length).to.equal(4)\r",
+							"    });\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -95,7 +108,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\r\n        \"title\": \"Caffe\",\r\n        \"id\": 1\r\n    }",
+					"raw": "    {\r\n        \"title\": \"Massage\",\r\n        \"id\": 4\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -124,9 +137,11 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"test_coupon_get\", function(){\r",
+							"pm.test(\"test_coupon_put\", function(){\r",
 							"    pm.expect(pm.response.code).to.equal(200);\r",
-							"});"
+							"});\r",
+							"\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -137,7 +152,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\r\n        \"title\": \"Caffe VIP\",\r\n        \"id\": 4\r\n    }",
+					"raw": " {\r\n        \"title\": \"battleship\",\r\n        \"id\": 4\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -145,7 +160,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/coupon/1",
+					"raw": "http://localhost:8080/coupon/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -153,7 +168,7 @@
 					"port": "8080",
 					"path": [
 						"coupon",
-						"1"
+						"4"
 					]
 				}
 			},
@@ -166,9 +181,11 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"test_coupon_get\", function(){\r",
+							"pm.test(\"test_coupon_delete\", function(){\r",
 							"    pm.expect(pm.response.code).to.equal(200);\r",
-							"});"
+							"});\r",
+							"\r",
+							""
 						],
 						"type": "text/javascript"
 					}
